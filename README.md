@@ -77,4 +77,49 @@ if __name__ == "__main__":
 - *[`Data validation`](./data_validation.sql)*
 - *[`EDA`](./eda.sql)*
 
+![Nobel p1](https://github.com/user-attachments/assets/aa23337f-d99e-4cd9-9e24-e2db02704cd2)
+## DAX scripts for Power BI calculation
+```SQL
+Oldest Age at Award = 
+VAR MaxAge = 
+    MAXX( ALL( nobelpbi ), nobelpbi[age_at_award] )
+VAR CategoryForMaxAge =
+    CALCULATE(
+        SELECTEDVALUE( nobelpbi[Category], "Multiple Categories" ), 
+        FILTER(
+            nobelpbi,
+            nobelpbi[age_at_award] = MaxAge
+        )
+    )
+RETURN
+    MaxAge & " (" & CategoryForMaxAge & ")"
+
+Youngest Age at Award = 
+VAR MinAge = 
+    MINX( ALL( nobelpbi ), nobelpbi[age_at_award] )
+VAR CategoryForMinAge =
+    CALCULATE(
+        SELECTEDVALUE( nobelpbi[Category], "Multiple Categories" ), 
+        FILTER(
+            nobelpbi,
+            nobelpbi[age_at_award] = MinAge
+        )
+    )
+RETURN
+    MinAge & " (" & CategoryForMinAge & ")"
+age_at_award = 
+VAR AwardDateValue = nobelpbi[award_year]
+VAR BirthDateValue = nobelpbi[birth_date]
+VAR AwardYear = YEAR(AwardDateValue)
+VAR BirthYear = YEAR(BirthDateValue)
+RETURN
+IF(
+    NOT ISBLANK(AwardDateValue) && NOT ISBLANK(BirthDateValue),
+    AwardYear - BirthYear,
+    BLANK()
+)
+```
+![Nobel p2](https://github.com/user-attachments/assets/32918cc1-ed6f-4514-87e0-6c12f9fb8532)
+
+
 
