@@ -9,7 +9,7 @@ Inspired by Nobel winner Han Kang, this project explores over a century of Nobel
 ## Tech stack & Workflow
 
 * **Tools:** Python (`pandas`), Microsoft Excel, MySQL, MySQL Workbench, VS Code.
-* **Workflow Summary:** Data acquired -> Cleaned & Merged (Python) -> Loaded into MySQL DB (Workbench) -> Validated & Analyzed (mySQLn in VS code).
+* **Workflow Summary:** Data acquired -> Cleaned & Merged (Python) -> Loaded into MySQL DB (Workbench) -> Validated & Analyzed (mySQL in VS code).
 
 ## Validation, Analysis & Code
 Extensive data validation was performed using SQL to ensure integrity and consistency, including checks for duplicates, value ranges, unique constraints, and standardization of fields like `birth_country`.
@@ -30,14 +30,13 @@ import os
 print(os.getcwd())
 
 # 1. FUNCTION DEFINITION 
-def combine_data(csv_path, excel_path, concat_path):  # These are just names!
-    """Combines CSV and Excel data (assumes identical columns)."""
+def combine_data(csv_path, excel_path, concat_path):  
     try:
         df_csv = pd.read_csv(csv_path)       
         df_excel = pd.read_excel(excel_path)  
         df_final = pd.concat([df_csv, df_excel], ignore_index=True)
         df_final.to_csv(concat_path, index=False) 
-        print(f"Combined data saved to {concat_path}")
+        print(f"Combined data {concat_path}")
         return df_final
     except (FileNotFoundError, pd.errors.ParserError, pd.errors.EmptyDataError, Exception) as e:
         print(f"Error: {e}")
@@ -80,7 +79,7 @@ if __name__ == "__main__":
 ![Nobel p1](https://github.com/user-attachments/assets/aa23337f-d99e-4cd9-9e24-e2db02704cd2)
 ![Nobel p2](https://github.com/user-attachments/assets/32918cc1-ed6f-4514-87e0-6c12f9fb8532)
 
-## DAX scripts for Power BI calculation
+## DAX scripts for PowerBI calculation
 ```SQL
 Oldest Age at Award = 
 VAR MaxAge = 
