@@ -77,7 +77,8 @@ if __name__ == "__main__":
 - *[`EDA`](./eda.sql)*
 
 ![Nobel p1](https://github.com/user-attachments/assets/aa23337f-d99e-4cd9-9e24-e2db02704cd2)
-![Nobel p2](https://github.com/user-attachments/assets/32918cc1-ed6f-4514-87e0-6c12f9fb8532)
+![Nobel p2](https://github.com/user-attachments/assets/04cc73e7-b7f3-4226-b57c-d2679cd629fc)
+
 
 ## DAX scripts for PowerBI calculation
 ```SQL
